@@ -42,7 +42,7 @@ const ErrorHandler=()=>{
 }
 
   return (
-    <div>
+    <React.Fragment>
       {Error && <ErrorModel title={Error.title} message={Error.message} onOk={ErrorHandler}/>}
       <Card className={classes.input}>
         <form onSubmit={submitHandler}>
@@ -63,7 +63,7 @@ const ErrorHandler=()=>{
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+      </React.Fragment>
   );
 }
 

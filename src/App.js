@@ -13,10 +13,10 @@ setUserDetails(prev => {
 })
   }
   
-  return <div>
+  return <React.Fragment>
     <AddUser onUser={addUserhandler}></AddUser>
     <UserList users={userdetails}></UserList>
-  </div>
+  </React.Fragment>
    
 }
 

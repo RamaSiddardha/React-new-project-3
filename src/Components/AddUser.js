@@ -5,6 +5,10 @@ import React from "react";
 import ErrorModel from "./UI/ErrorModel";
 
 function AddUser(props) {
+
+  const CollegeName=React.useRef()
+
+
   const [enteredUser, setUser] = React.useState("");
   const [enteredAge, setAge] = React.useState("");
   const [Error, setError] = React.useState();
@@ -17,6 +21,9 @@ function AddUser(props) {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+
+    const enteredCollegeName=CollegeName.current.value
+
     if (enteredUser.trim().length === 0) {
       setError({
         title: "Invalid User Name",
@@ -32,9 +39,20 @@ function AddUser(props) {
       });
       return;
     }
-    props.onUser(enteredUser, enteredAge);
+
+    if (enteredCollegeName.trim().length === 0) {
+      setError({
+        title: "Invalid College Name",
+        message: "Please Enter Vlid College Name(College Name cant be Empty)",
+      });
+      return;
+    }
+   
+
+    props.onUser(enteredUser, enteredAge,enteredCollegeName);
     setUser("");
     setAge("");
+    CollegeName.current.value =''
   };
 
 const ErrorHandler=()=>{
@@ -60,6 +78,8 @@ const ErrorHandler=()=>{
             onChange={AgeHandler}
             value={enteredAge}
           ></input>
+          <label htmlFor="collegeName">College Name</label>
+          <input type='text' id="collegeName" ref={CollegeName}></input>
           <Button type="submit">Add User</Button>
         </form>
       </Card>

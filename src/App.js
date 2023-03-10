@@ -7,9 +7,9 @@ import React from 'react';
 function App() {
 
   const [userdetails,setUserDetails] = React.useState([   ])
-  const addUserhandler =(userName,Age) =>{
+  const addUserhandler =(userName,Age,collegeName) =>{
 setUserDetails(prev => {
-  return [...prev,{name:userName,age:Age}]
+  return [...prev,{name:userName,age:Age,collegeName:collegeName}]
 })
   }
   
